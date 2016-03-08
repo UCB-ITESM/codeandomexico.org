@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.3.0'
 
-gem 'rails', '3.2.19'
+gem 'rails', '3.2.22.2'
 
 gem 'foreman'
 gem 'pg'
