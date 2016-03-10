@@ -4,8 +4,9 @@ feature 'Collaborator receives phase finish reminder' do
   scenario 'for ideas phase' do
     Time.use_zone('Monterrey') do
       member = create :member
-      challenge = create :challenge, title: 'Reto Alerta', ideas_phase_due_on: 7.days.from_now
-      collaboration = create :collaboration, member: member, challenge: challenge
+      challenge = create :challenge, title: 'Reto Alerta',
+                                     ideas_phase_due_on: 7.days.from_now
+      create :collaboration, member: member, challenge: challenge
 
       reset_email
       send_phase_finish_reminders!
@@ -16,7 +17,7 @@ feature 'Collaborator receives phase finish reminder' do
   scenario 'just if the user accepts to receive phase finish reminders' do
     member = create :member, phase_finish_reminder_setting: false
     challenge = create :challenge, ideas_phase_due_on: 7.days.from_now
-    collaboration = create :collaboration, member: member, challenge: challenge
+    create :collaboration, member: member, challenge: challenge
 
     reset_email
     send_phase_finish_reminders!
@@ -27,7 +28,7 @@ feature 'Collaborator receives phase finish reminder' do
     Time.use_zone('Monterrey') do
       member = create :member
       challenge = create :challenge, ideas_phase_due_on: 8.days.from_now
-      collaboration = create :collaboration, member: member, challenge: challenge
+      create :collaboration, member: member, challenge: challenge
 
       reset_email
       send_phase_finish_reminders!
