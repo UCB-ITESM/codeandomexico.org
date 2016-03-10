@@ -20,13 +20,14 @@ feature 'Collaborator adds prototype to entry' do
   end
 
   scenario 'in the prototypes phase with good params' do
-    pending
-    submit_prototype_with(
-      repo_url: 'github.com/ervity/miprototipo',
-      demo_url: 'miprototipo.com'
-    )
-    current_path.should eq challenge_path(challenge)
-    page.should have_content success_message(1.week.from_now)
+    Time.use_zone('Monterrey') do
+      submit_prototype_with(
+        repo_url: 'github.com/ervity/miprototipo',
+        demo_url: 'miprototipo.com'
+      )
+      current_path.should eq challenge_path(challenge)
+      page.should have_content success_message(1.week.from_now)
+    end
   end
 
   scenario 'in the prototypes phase with bad params' do
