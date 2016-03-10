@@ -32,7 +32,7 @@ gem 'faker'
 group :test do
   gem 'shoulda-matchers'
   gem 'selenium-webdriver'
-  gem 'capybara-webkit'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   gem 'codeclimate-test-reporter', require: nil

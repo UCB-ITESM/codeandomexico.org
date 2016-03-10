@@ -91,9 +91,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.8.0)
-      capybara (>= 2.3.0, < 2.7.0)
-      json
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -551,7 +548,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.1)
   bullet
   cancan
-  capybara-webkit
+  capybara
   carrierwave (~> 0.8.0)
   ckan!
   codeclimate-test-reporter

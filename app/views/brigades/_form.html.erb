@@ -1,0 +1,57 @@
+<%= form_for(@brigade) do |f| %>
+  <% if @brigade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brigade.errors.count, "error") %> prohibited this brigade from being saved:</h2>
+
+      <ul>
+      <% @brigade.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :calendar_url %><br />
+    <%= f.text_field :calendar_url %>
+  </div>
+  <div class="field">
+    <%= f.label :slack_url %><br />
+    <%= f.text_field :slack_url %>
+  </div>
+  <div class="field">
+    <%= f.label :github_url %><br />
+    <%= f.text_field :github_url %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook_url %><br />
+    <%= f.text_field :facebook_url %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_url %><br />
+    <%= f.text_field :twitter_url %>
+  </div>
+  <div class="field">
+    <%= f.label :header_image_url %><br />
+    <%= f.text_field :header_image_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit submit_button_text(f) %>
+  </div>
+<% end %>
