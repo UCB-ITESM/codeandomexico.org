@@ -2,20 +2,22 @@ require 'spec_helper'
 
 feature 'Collaborator receives phase finish reminder' do
   scenario 'for ideas phase' do
-    pending
-    member = create :member
-    challenge = create :challenge, title: 'Reto Alerta', ideas_phase_due_on: 7.days.from_now
-    collaboration = create :collaboration, member: member, challenge: challenge
+    Time.use_zone('Monterrey') do
+      member = create :member
+      challenge = create :challenge, title: 'Reto Alerta',
+                                     ideas_phase_due_on: 7.days.from_now
+      create :collaboration, member: member, challenge: challenge
 
-    reset_email
-    send_phase_finish_reminders!
-    member_should_receive_phase_finish_reminder(member)
+      reset_email
+      send_phase_finish_reminders!
+      member_should_receive_phase_finish_reminder(member)
+    end
   end
 
   scenario 'just if the user accepts to receive phase finish reminders' do
     member = create :member, phase_finish_reminder_setting: false
     challenge = create :challenge, ideas_phase_due_on: 7.days.from_now
-    collaboration = create :collaboration, member: member, challenge: challenge
+    create :collaboration, member: member, challenge: challenge
 
     reset_email
     send_phase_finish_reminders!
@@ -23,14 +25,15 @@ feature 'Collaborator receives phase finish reminder' do
   end
 
   scenario 'but just at the right time' do
-    pending
-    member = create :member
-    challenge = create :challenge, ideas_phase_due_on: 8.days.from_now
-    collaboration = create :collaboration, member: member, challenge: challenge
+    Time.use_zone('Monterrey') do
+      member = create :member
+      challenge = create :challenge, ideas_phase_due_on: 8.days.from_now
+      create :collaboration, member: member, challenge: challenge
 
-    reset_email
-    send_phase_finish_reminders!
-    member_should_not_receive_phase_finish_reminder
+      reset_email
+      send_phase_finish_reminders!
+      member_should_not_receive_phase_finish_reminder
+    end
   end
 
   def send_phase_finish_reminders!
