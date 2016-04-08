@@ -147,6 +147,10 @@ class User < ActiveRecord::Base
     current_organization.present? && current_organization.id == challenge.organization.id
   end
 
+  def self.admin_of_brigade?(brigade)
+    self.id == brigade.user.user_id
+  end
+
   private
 
   def fetch_twitter_avatar
